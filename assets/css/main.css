@@ -2255,6 +2255,7 @@ input, select, textarea {
 			font-family: 'Font Awesome 5 Brands';
 		}
 
+
 		.icon.major {
 			border: solid 1px;
 			display: inline-block;
@@ -2309,6 +2310,7 @@ input, select, textarea {
 		.icon.style5 {
 			color: #8cc9f0;
 		}
+		
 
 		@media screen and (max-width: 1680px) {
 
@@ -2626,6 +2628,16 @@ input, select, textarea {
 			padding: 0 0.65em 0 0;
 		}
 
+		ul.icons li label {
+			display: block;
+		}
+
+		ul.icons li img {
+			height: 42px;
+			width: auto;
+			filter: grayscale(100%);
+		  }
+
 			ul.icons li:last-child {
 				padding-right: 0 !important;
 			}
@@ -2814,10 +2826,28 @@ input, select, textarea {
 	}
 
 		.features li {
+
 			width: calc(33.33333% - 2em);
 			margin-left: 2em;
 			margin-top: 3em;
 			padding: 0;
+		}
+
+
+		.features li .desc{
+			font-size: 20px;
+			text-align: justify;
+		}
+
+
+
+		.features li img {
+			width: 200px;
+			height: 200px;
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			border-radius: 50%;
 		}
 
 			.features li:nth-child(1), .features li:nth-child(2), .features li:nth-child(3) {
@@ -2990,7 +3020,9 @@ input, select, textarea {
 			-ms-flex: 1;
 			flex: 1;
 			position: relative; 
-			z-index: 1; 
+			z-index: 1;
+			text-align: justify; /* Se ha añadido la propiedad text-align */
+		  	max-width: 50%; /* Se ha añadido la propiedad max-width */ 
 		}
 
 			.spotlight .content > :last-child {
@@ -3012,10 +3044,11 @@ input, select, textarea {
 				display: block;
 				-webkit-mask-image: linear-gradient(to right, transparent, black);
     			mask-image: linear-gradient(to right, transparent, black);
-				max-width: 100%;
+				max-width: calc(100% - 20%);
 				border-top-right-radius: 50px;
 				border-bottom-right-radius: 50px;
 				border: solid 1px;
+				margin-left: 20%;
 			}
 	
 	
