@@ -2621,11 +2621,15 @@ input, select, textarea {
 		cursor: default;
 		list-style: none;
 		padding-left: 0;
+		display: flex; 
+    	justify-content: space-between;
 	}
 
 		ul.icons li {
 			display: inline-block;
+			flex: 1;
 			padding: 0 0.65em 0 0;
+			text-align: center; 
 		}
 
 		ul.icons li label {
@@ -3742,6 +3746,7 @@ input, select, textarea {
 		width: calc(100% + 2em);
 		margin: 0 0 3em -2em;
 		text-align: center; 
+		justify-content: space-around;
 	}
 
 	#footer > * {

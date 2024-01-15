@@ -19,12 +19,16 @@ document.addEventListener("DOMContentLoaded", function () {
     if (introSection) {
         document.querySelector("#intro h2").textContent = "Sobre mí";
         document.querySelector("#intro p").innerHTML =
-          "Cuando era chico, me encantaban las matemáticas, mi materia favorita en la escuela. Siempre buscaba descubrir las regularidades matemáticas en el mundo.<br>" +
-          "Durante mi adolescencia, mientras participaba de distintas competencias científicas, descubrí que mi verdadera pasión era el pensamiento lógico y analítico.<br>" +
-          "Al terminar la secundaria empecé a formar estudiantes para participar de las olimpíadas matemáticas, pero honestamente estaba algo desilusionado con el entorno pedagógico que me ofrecieron, por eso decidí estudiar Ciencias de la Educación, primero en Argentina y luego en Italia.<br>" +
-          "Al regresar de Italia después de completar mi maestría, retomé esas antiguas pasiones y noté que mi nuevo trasfondo en Ciencias Sociales es especialmente útil para potenciar los desarrollos en Inteligencia Artificial.<br>" +
-          "Actualmente, me dedico profesionalmente a desarrollar software con Inteligencia Artificial y estudio cada día para ser un experto en el tema.";
-
+          "Siempre fui un apasionado de los números, cuando era chico matemáticas era mi materia favorita y siempre buscaba reglas numéricas que explicaran el mundo." +
+          "<br>" +
+          "Más tarde, participando de distintas competencias científicas descubrí que lo que en realidad me apasionaba era el pensamiento lógico y analítico." +
+          "<br>" +
+          "Una vez graduado de la secundaria comencé a formar a aquellos estudiantes que quisieran participar de las olimpíadas matemáticas, pero honestamente estaba algo desilusionado con el entorno pedagógico que me ofrecieron, por eso decidí estudiar Ciencias de la Educación, primero en Argentina y luego en Italia. Esto me permitió dar una perspectiva social al conocimiento científico que había desarrollado hasta entonces." +
+          "<br>" +
+          "Al regresar de Italia después de completar mi maestría, retomé esas antiguas pasiones y noté que mi nuevo trasfondo era especialmente útil para potenciar los desarrollos en Inteligencia Artificial." +
+          "<br>" +
+          "Todo esto me trae a la actualidad, donde me dedico profesionalmente a desarrollar software con Inteligencia Artificial y estudio cada día para ser un experto en el tema. Combinando la capacidad de razonamiento matemático que he profundizado toda mi vida y el costado social que es indispensable a la hora de pensar estos trabajos.";
+        
 
         var learnMoreLink = introSection.querySelector(".actions a.button");
         if (learnMoreLink) learnMoreLink.textContent = "Mi Curriculum";
