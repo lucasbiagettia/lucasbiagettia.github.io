@@ -47,6 +47,12 @@ document.addEventListener("DOMContentLoaded", function () {
           description: "Una aplicación desafiante que pone a prueba tu astucia lingüística. Utiliza modelos BERT para adivinar palabras ocultas, comparando embeddings y acumulando puntos con cada acierto. Un juego que va más allá de las adivinanzas convencionales, ofreciendo un desafío profundo basado en la tecnología de vanguardia.",
           link: "https://guessthewordgame.streamlit.app/"
         },
+        {
+          title: "PoetGPT",
+          urlImage: "images/poetGpt.png",
+          description: "Una herramienta de IA generativa que crea poesía original en español. Basado en la arquitectura de los modelos Pythia de EleutherAI y entrenado con un dataset propio, PoetGPT combina creatividad y conocimiento del lenguaje para ofrecer composiciones poéticas innovadoras y estilísticamente variadas.",
+          link: "https://poetgptspanish.streamlit.app/"
+        }
     ];
 
     function generateProjectHTML(project) {
