@@ -1,105 +1,251 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
+<html lang="en">
 
-<html>
-	<head>
-		<title>Lucas Biagetti</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lucas Biagetti — AI/ML Engineer & Researcher</title>
+  <meta name="description"
+    content="Building production AI systems. Researching evaluation, interpretability, and reasoning in machine learning.">
 
-		
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		<meta http-equiv="Content-Security-Policy" content="default-src 'none'; 
-		script-src 'self' https://lucasbiagetti.com.ar; 
-		style-src 'self' https://lucasbiagetti.com.ar https://fonts.googleapis.com; 
-		font-src 'self' https://fonts.gstatic.com; 
-		img-src 'self' https://lucasbiagetti.com.ar;">
-		
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
 
-		
-	</head>
-	<body class="is-preload">
-			<div id="wrapper">
-					<header id="header" class="alt">
-						<div class="logo">
-							<img src="images/profile.png" alt="Foto de perfil" />
-						</div>
-						<h1></h1>
-						<p><br/>
-					</header>
-					<nav id="nav">
-						<ul>
-							<li><a href="#intro" class="active"></a></li>
-							<li><a href="#projects"></a></li>
-							<li><a href="#footer"></a></li>
-						</ul>
-					</nav>
-					<div id="main">
-							<section id="intro" class="main">
-								<div class="spotlight">
-									<div class="content">
-										<header class="major">
-											<h2></h2>
-										</header>
-										<p></p>
-										<ul class="actions">
-											<li><a href="https://github.com/lucasbiagettia/CurriculumVitae/blob/main/CV%20Lucas%20Biagetti.pdf" class="button" target="_blank"></a></li>
-										</ul>
-									</div>
-									<span class="image"><img src="images/horizontal.png" alt="" /></span>
-								</div>
-							</section>
-							<section id="projects" class="main special">
-								<header class="major">
-									<h2>Proyectos</h2>
-								</header>
-								<ul class="features">
-								</ul>
-								
-							</section>
-						</div>
+<body>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-content">
+      <img src="images/profile.png" alt="Lucas Biagetti" class="hero-avatar animate-in">
+      <h1 class="animate-in animate-delay-1">Lucas Biagetti</h1>
+      <p class="hero-subtitle animate-in animate-delay-2">AI/ML Engineer & Researcher</p>
+      <p class="hero-description animate-in animate-delay-3">
+        Building production AI systems. Asking hard questions about evaluation,
+        interpretability, and reasoning.
+      </p>
+      <div class="hero-links animate-in animate-delay-4">
+        <a href="https://github.com/lucasbiagettia" target="_blank">
+          <img src="images/github-mark-white.png" alt=""> GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/lucasbiagettia" target="_blank">
+          <img src="images/LI-In-Bug.png" alt=""> LinkedIn
+        </a>
+        <a href="https://huggingface.co/lucasbiagettia" target="_blank">
+          <img src="images/hf-logo.png" alt=""> Hugging Face
+        </a>
+      </div>
+    </div>
+  </section>
 
-						<!-- Footer -->
-						<footer id="footer">
-								<ul class="icons">
-									<li>
-										<a href="https://github.com/lucasbiagettia" target="_blank" >
-										  <img src="images/github-mark-white.png" alt="GitHub">
-										</a>
-										<p>GitHub</p>
-									</li>
-									<li>
-										<a href="https://www.linkedin.com/in/lucasbiagettia" target="_blank">
-										  <img src="images/LI-In-Bug.png" alt="LinkedIn">
-										</a>
-										<p>LinkedIn</p>
-									</li>
-									<li>
-										<a href="https://huggingface.co/lucasbiagettia" target="_blank">
-										  <img src="images/hf-logo.png" alt="HuggingFace">
-										  
-										</a>
-										<p>HuggingFace</p>
-									</li>
-								
-									
-								</ul>
-							</section>
-						</footer>
-						
-		
-					</div>
+  <!-- Research Interests -->
+  <section id="research">
+    <div class="container">
+      <div class="section-header">
+        <h2>Research Interests</h2>
+        <p>Questions I keep returning to</p>
+      </div>
+      <div class="research-grid">
+        <div class="research-card">
+          <h3><span class="icon">📊</span> Evaluation Without Ground Truth</h3>
+          <p>How do you distinguish real learning from memorization when there's no correct answer?
+            I faced this building poetry generators and market simulation systems.</p>
+          <div class="tags">
+            <span class="tag">PoetGPT</span>
+            <span class="tag">PhantomLabs</span>
+          </div>
+        </div>
+        <div class="research-card">
+          <h3><span class="icon">🔍</span> Interpretability for High-Stakes Decisions</h3>
+          <p>When a model assists investment or education decisions, the "why" matters as much
+            as the output. Building systems with full traceability and auditability.</p>
+          <div class="tags">
+            <span class="tag">Xylence</span>
+            <span class="tag">RAG Systems</span>
+          </div>
+        </div>
+        <div class="research-card">
+          <h3><span class="icon">🧠</span> Reasoning & Chain-of-Thought</h3>
+          <p>Can explicit reasoning compensate for model size? Exploring this question through
+            experiments with CoCoNut and years of coaching mathematical problem-solving.</p>
+          <div class="tags">
+            <span class="tag">CoCoNut</span>
+            <span class="tag">Math Olympiad</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-			<script src="content.js"></script>
+  <!-- Projects -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-header">
+        <h2>Research Projects</h2>
+        <p>Open-source experiments and demos</p>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-card-content">
+            <h3>PoetGPT</h3>
+            <p>Spanish poetry generation using EleutherAI's Pythia model. Built a dataset of
+              ~5,000 poems and a custom tokenizer with special tokens for line/stanza structure.
+              The core challenge: how do you evaluate quality in creative generation?</p>
+            <div class="project-links">
+              <a href="https://poetgptspanish.streamlit.app/" target="_blank">Demo →</a>
+              <a href="https://github.com/lucasbiagettia/poetGPT" target="_blank">Code →</a>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-card-content">
+            <h3>BorgesBot</h3>
+            <p>Literary style transfer fine-tuned to imitate Jorge Luis Borges. Created
+              my own dataset from his complete works and built the training pipeline from scratch.
+              An experiment in capturing stylistic patterns.</p>
+            <div class="project-links">
+              <a href="https://borgesbot.streamlit.app/" target="_blank">Demo →</a>
+              <a href="https://github.com/lucasbiagettia/BorgesBot" target="_blank">Code →</a>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-card-content">
+            <h3>CoCoNut + GPT-2 Experiment</h3>
+            <p>Implementation of the CoCoNut paper applied to GPT-2. Exploring whether explicit
+              chain-of-thought reasoning can compensate for model size—trading parameters for
+              structured thinking.</p>
+            <div class="project-links">
+              <a href="https://github.com/lucasbiagettia/coconut" target="_blank">Code →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-	</body>
+  <!-- Experience -->
+  <section id="experience">
+    <div class="container">
+      <div class="section-header">
+        <h2>Experience</h2>
+        <p>Building AI systems in production</p>
+      </div>
+      <div class="experience-list">
+        <div class="experience-item">
+          <div class="experience-meta">
+            <span class="company">Xylence</span>
+            <span class="date">2025 – Present</span>
+          </div>
+          <div class="experience-content">
+            <h3>Head of AI/ML Engineering</h3>
+            <p>Leading the predictive engine that turns unstructured inputs (pitch decks, interviews,
+              web signals) into decision-grade structured data for VCs.</p>
+            <ul>
+              <li>Built technical foundation from scratch: no GitHub to product in beta in &lt;3 months</li>
+              <li>Architecture with full traceability: every output is auditable and explainable</li>
+              <li>Evaluation harnesses for retrieval quality, latency, hallucination rate</li>
+              <li>Leading a team of 5 engineers</li>
+            </ul>
+          </div>
+        </div>
+        <div class="experience-item">
+          <div class="experience-meta">
+            <span class="company">Santex</span>
+            <span class="date">Mar – Sep 2025</span>
+          </div>
+          <div class="experience-content">
+            <h3>Sr. AI Engineer</h3>
+            <p>Rapid prototyping and production deployment of AI solutions.</p>
+            <ul>
+              <li>Voice agents with Whisper + ElevenLabs (&lt;500ms p95 latency)</li>
+              <li>"Prospect cloner" system analyzing interview patterns to create AI personas</li>
+              <li>~2 proofs of concept per week; 30% conversion to product</li>
+            </ul>
+          </div>
+        </div>
+        <div class="experience-item">
+          <div class="experience-meta">
+            <span class="company">NeuralSoft</span>
+            <span class="date">2021 – 2025</span>
+          </div>
+          <div class="experience-content">
+            <h3>AI Specialist</h3>
+            <p>Built production RAG systems deployed to 800+ enterprise clients.</p>
+            <ul>
+              <li>Custom RAG system achieving 93% accuracy across ~2000 queries</li>
+              <li>Domain-agnostic anomaly detection in pure Java with Fourier transforms</li>
+              <li>Time series forecasting and sentiment analysis systems</li>
+              <li>Reduced AI integration costs by 80%</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Background -->
+  <section id="background">
+    <div class="container">
+      <div class="section-header">
+        <h2>Background</h2>
+      </div>
+      <div class="background-grid">
+        <div class="background-card">
+          <h3>Competitive Mathematics</h3>
+          <ul>
+            <li>IMO Selection (2012)</li>
+            <li>Iberoamerican Mathematical Olympiad (2012)</li>
+            <li>Tournament of Towns (2008, 2012, 2013)</li>
+            <li>Coached olympiad students, 2013–2016</li>
+          </ul>
+        </div>
+        <div class="background-card">
+          <h3>Education</h3>
+          <ul>
+            <li>Master's in Pedagogical Sciences — 110/110 with honors, Università della Calabria, Italy</li>
+            <li>Bachelor's & Teaching Degree in Educational Sciences — 8.45/10, Universidad Nacional de Rosario</li>
+            <li>Systems Analyst — 66% completed, UNR</li>
+          </ul>
+        </div>
+        <div class="background-card">
+          <h3>Academic Research</h3>
+          <ul>
+            <li>4 publications in educational anthropology (2016–2018)</li>
+            <li>Including a chapter with ISBN</li>
+            <li>Presentations at UBA, UNC, UNR, CONICET</li>
+            <li>Researcher at Núcleo Antropológico Educativo (UNR, 2014–present)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://github.com/lucasbiagettia" target="_blank">
+          <img src="images/github-mark-white.png" alt="GitHub">
+          GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/lucasbiagettia" target="_blank">
+          <img src="images/LI-In-Bug.png" alt="LinkedIn">
+          LinkedIn
+        </a>
+        <a href="https://huggingface.co/lucasbiagettia" target="_blank">
+          <img src="images/hf-logo.png" alt="HuggingFace">
+          Hugging Face
+        </a>
+      </div>
+      <p class="footer-email">
+        <a href="mailto:lucasbiagetti@gmail.com">lucasbiagetti@gmail.com</a>
+      </p>
+      <p class="footer-copyright">© 2026 Lucas Biagetti</p>
+    </div>
+  </footer>
+</body>
+
 </html>
