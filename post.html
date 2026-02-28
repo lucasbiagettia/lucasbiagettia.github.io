@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article — Lucas Biagetti</title>
+    <link rel="icon" href="images/favicon.ico?v=2" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Markdown parser (marked.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <!-- Math renderer (KaTeX) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+
+    <!-- Load Posts Metadata -->
+    <script src="posts.js"></script>
+</head>
+
+<body>
+    <!-- Minimal Header for internal pages -->
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="index.html" class="site-title">Lucas Biagetti</a>
+            <nav class="site-nav">
+                <a href="index.html#research">Research</a>
+                <a href="index.html#projects">Projects</a>
+            </nav>
+        </div>
+    </header>
+
+    <article class="post-container container">
+        <header class="post-header">
+            <h1 class="post-title" id="post-title">Loading...</h1>
+
+            <div class="post-meta">
+                <span class="post-date" id="post-date"></span>
+                <span class="post-author" id="post-author"></span>
+                <a href="#" class="lang-toggle" id="lang-toggle">
+                    <span class="lang-active" id="lang-en">en</span> / <span class="lang-inactive"
+                        id="lang-es">es</span>
+                </a>
+            </div>
+        </header>
+
+        <div class="post-content" id="post-content">
+            <p>Fetching article content...</p>
+        </div>
+
+        <div class="post-footer">
+            <a href="index.html" class="back-link">← Back to Home</a>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-links">
+                <a href="https://github.com/lucasbiagettia" target="_blank">
+                    <img src="images/github-mark-white.png" alt="GitHub"> GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/lucasbiagettia" target="_blank">
+                    <img src="images/LI-In-Bug.png" alt="LinkedIn"> LinkedIn
+                </a>
+                <a href="https://huggingface.co/lucasbiagettia" target="_blank">
+                    <img src="images/hf-logo.png" alt="HuggingFace"> Hugging Face
+                </a>
+            </div>
+            <p class="footer-email">
+                <a href="mailto:lucasbiagetti@gmail.com">lucasbiagetti@gmail.com</a>
+            </p>
+            <p class="footer-copyright">© 2026 Lucas Biagetti</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const postId = urlParams.get('id');
+            const lang = urlParams.get('lang') || 'en';
+            const otherLang = lang === 'en' ? 'es' : 'en';
+
+            if (!postId) {
+                document.getElementById('post-content').innerHTML = "<p>Error: No article ID specified.</p>";
+                return;
+            }
+
+            // Format Date purely vanilla (date comes from posts.js)
+            const postMeta = BLOG_POSTS.find(p => p.id === postId);
+            if (postMeta) {
+                const dateObj = new Date(postMeta.date);
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                document.getElementById('post-date').innerText = dateObj.toLocaleDateString(lang === 'en' ? 'en-US' : 'es-ES', options);
+            }
+
+            // Set Author dynamically based on active language
+            const authorText = lang === 'es' ? ' — por Lucas Biagetti' : ' — by Lucas Biagetti';
+            document.getElementById('post-author').innerText = authorText;
+
+            // Setup language toggle UI
+            document.documentElement.lang = lang;
+            const toggleBtn = document.getElementById('lang-toggle');
+            toggleBtn.href = `post.html?id=${postId}&lang=${otherLang}`;
+
+            if (lang === 'en') {
+                document.getElementById('lang-en').className = 'lang-active';
+                document.getElementById('lang-es').className = 'lang-inactive';
+            } else {
+                document.getElementById('lang-en').className = 'lang-inactive';
+                document.getElementById('lang-es').className = 'lang-active';
+            }
+
+            // Dynamic check if the alternative language translation exists
+            fetch(`posts/${postId}_${otherLang}.md`, { method: 'HEAD' })
+                .then(res => {
+                    if (!res.ok) toggleBtn.style.display = 'none';
+                });
+
+            // Fetch and Render Markdown
+            fetch(`posts/${postId}_${lang}.md`)
+                .then(response => {
+                    if (!response.ok) throw new Error(`HTTP ${response.status}: Failed to load file.`);
+                    return response.text();
+                })
+                .then(markdown => {
+                    let contentMarkdown = markdown;
+                    // Extract the Title from Markdown h1 line (# Title)
+                    const titleMatch = markdown.match(/^#\s+(.+)$/m);
+
+                    if (titleMatch) {
+                        const title = titleMatch[1];
+                        document.title = `${title} — Lucas Biagetti`;
+                        document.getElementById('post-title').innerText = title;
+                        // Strip the title from the markdown body so it is not double-rendered
+                        contentMarkdown = markdown.replace(/^#\s+(.+)$/m, '').trim();
+                    } else {
+                        document.title = `Article — Lucas Biagetti`;
+                        document.getElementById('post-title').innerText = "Article";
+                    }
+
+                    document.getElementById('post-content').innerHTML = marked.parse(contentMarkdown);
+                    // Render math if exist
+                    if (typeof renderMathInElement === 'function') {
+                        renderMathInElement(document.getElementById('post-content'), {
+                            delimiters: [
+                                { left: '$$', right: '$$', display: true },
+                                { left: '$', right: '$', display: false }
+                            ],
+                            throwOnError: false
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                    document.getElementById('post-title').innerText = "Post Not Found";
+                    document.getElementById('post-content').innerHTML = `<p>Error loading content for ${lang} translation: Make sure "posts/${postId}_${lang}.md" exists.</p>`;
+                });
+        });
+    </script>
+</body>
+
+</html>

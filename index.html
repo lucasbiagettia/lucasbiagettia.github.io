@@ -8,11 +8,12 @@
   <meta name="description"
     content="Building production AI systems. Researching evaluation, interpretability, and reasoning in machine learning.">
 
-  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="images/favicon.ico?v=2" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script src="posts.js"></script>
 </head>
 
 <body>
@@ -36,6 +37,20 @@
         <a href="https://huggingface.co/lucasbiagettia" target="_blank">
           <img src="images/hf-logo.png" alt=""> Hugging Face
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section id="blog">
+    <div class="container">
+      <div class="section-header">
+        <h2>Writing</h2>
+        <p>Research notes, opinions, and longer thoughts</p>
+      </div>
+
+      <div class="blog-list" id="blog-list-container">
+        <!-- Posts will be injected here by JavaScript -->
       </div>
     </div>
   </section>
@@ -246,6 +261,78 @@
       <p class="footer-copyright">© 2026 Lucas Biagetti</p>
     </div>
   </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const blogContainer = document.getElementById("blog-list-container");
+
+      if (!BLOG_POSTS || BLOG_POSTS.length === 0) {
+        blogContainer.innerHTML = '<p class="no-posts">No posts yet. Check back soon!</p>';
+        return;
+      }
+
+      // Now forcing English as the default display language for the homepage
+      const defaultLang = 'en';
+
+      let htmlPromises = BLOG_POSTS.map(post => {
+        let lang = defaultLang;
+
+        // Dynamically fetch the markdown file to extract Title and Excerpt
+        return fetch(`posts/${post.id}_${lang}.md`)
+          .then(res => {
+            if (!res.ok) {
+              lang = 'es'; // Fallback to Spanish if English doesn't exist at all
+              return fetch(`posts/${post.id}_es.md`);
+            }
+            return res;
+          })
+          .then(res => {
+            if (!res.ok) throw new Error("File not found");
+            return res.text();
+          })
+          .then(text => {
+            // Extract title (first line starting with #)
+            const titleMatch = text.match(/^#\s+(.+)$/m);
+            const title = titleMatch ? titleMatch[1] : "Untitled Document";
+
+            // Extract excerpt (first non-empty text paragraph)
+            let excerpt = "Read more...";
+            const lines = text.split('\n');
+            for (let line of lines) {
+              line = line.trim();
+              // Ignore headers, blockquotes, code blocks, images, and empty lines
+              if (line && !line.startsWith('#') && !line.startsWith('>') && !line.startsWith('```') && !line.startsWith('![')) {
+                excerpt = line;
+                break;
+              }
+            }
+            if (excerpt.length > 140) excerpt = excerpt.substring(0, 137) + "...";
+
+            // Format Date
+            const dateObj = new Date(post.date);
+            const dateFormatted = dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+            return `
+              <article class="blog-card">
+                <div class="blog-meta">
+                  <time datetime="${post.date}">${dateFormatted}</time>
+                  <span class="blog-tag">Research</span>
+                </div>
+                <h3><a href="post.html?id=${post.id}&lang=${lang}">${title}</a></h3>
+                <p class="blog-excerpt">${excerpt}</p>
+                <a href="post.html?id=${post.id}&lang=${lang}" class="read-more">Read article →</a>
+              </article>
+            `;
+          })
+          .catch(() => ''); // Silently skip error, meaning file isn't uploaded yet
+      });
+
+      Promise.all(htmlPromises).then(htmls => {
+        const finalHtml = htmls.filter(h => h).join('');
+        blogContainer.innerHTML = finalHtml || '<p class="no-posts">No posts found.</p>';
+      });
+    });
+  </script>
 </body>
 
 </html>
