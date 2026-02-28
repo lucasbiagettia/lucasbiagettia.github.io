@@ -306,7 +306,8 @@
                 break;
               }
             }
-            if (excerpt.length > 140) excerpt = excerpt.substring(0, 137) + "...";
+            // Showing the full excerpt without truncating it
+            // if (excerpt.length > 140) excerpt = excerpt.substring(0, 137) + "...";
 
             // Format Date
             const dateObj = new Date(post.date);
