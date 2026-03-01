@@ -319,9 +319,9 @@
                   <time datetime="${post.date}">${dateFormatted}</time>
                   <span class="blog-tag">Research</span>
                 </div>
-                <h3><a href="post.html?id=${post.id}&lang=${lang}">${title}</a></h3>
+                <h3><a href="${post.id}.html?lang=${lang}">${title}</a></h3>
                 <p class="blog-excerpt">${excerpt}</p>
-                <a href="post.html?id=${post.id}&lang=${lang}" class="read-more">Read article →</a>
+                <a href="${post.id}.html?lang=${lang}" class="read-more">Read article →</a>
               </article>
             `;
           })
