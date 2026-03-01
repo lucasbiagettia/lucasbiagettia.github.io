@@ -30,7 +30,7 @@ Para el pedagogo (también soy cientista de la educación) el aprendizaje es un 
 
 Un chico que resuelve un problema de una forma inesperada aprendió algo, aunque no pueda demostrarlo en un examen. Un estudiante que repite la respuesta correcta sin entender por qué quizás no aprendió nada, aunque la métrica diga lo contrario. 
 
-Esta reflexión tiene asidero en un fracaso propio intentando modelar algo no-lingüístico con una transformer. Confié en que podía usar la función de pérdida como métrica, una confusión grave. La función de pérdida es lo que el modelo optimiza internamente durante el entrenamiento: es lo que guía su convergencia. La métrica es lo que nosotros, los humanos, miramos después para decidir si el resultado es bueno. Son dos cosas distintas. Y el hecho de que puedan diverger.
+Esta reflexión tiene asidero en un fracaso propio intentando modelar algo no-lingüístico con una transformer. Confié en que podía usar la función de pérdida como métrica, una confusión grave. La función de pérdida es lo que el modelo optimiza internamente durante el entrenamiento: es lo que guía su convergencia. La métrica es lo que nosotros, con conocimiento del problema a resolver, miramos después para decidir si el resultado es bueno. Son dos cosas distintas. Y de hecho pueden diverger.
 
 Como ingenieros, vivimos de medir resultados. Diseñamos funciones de pérdida, evaluamos con métricas, optimizamos números. Es lo que sabemos hacer y por lo que nos pagan. 
 
@@ -55,7 +55,7 @@ Amanda Askell, la filósofa que trabaja en Anthropic y fue una de las responsabl
 
 Detengámonos en esa frase. No dice "no son conscientes" ni "son conscientes". Dice: no tenemos las herramientas conceptuales para siquiera formular la pregunta correctamente.
 
-*Consciencia*, *entender*, *sentir*, *pensar*, *razonar* son términos que usamos todos los días para hablar de LLMs que tienen mucho debate filosófico detrás. Cuando los aplicamos a máquinas, heredamos toda esa carga de ambigüedad y le sumamos una nueva: la de un fenómeno sin precedentes que genuinamente no se parece a nada que hayamos visto antes. Este es un problema clásico de filosofía de la ciencia: pocas palabras para muchos fenómenos. Y estamos tratando de resolver preguntas fundamentales con un vocabulario que no fue diseñado para ellas.
+*Consciencia*, *entender*, *sentir*, *pensar*, *razonar* son términos que usamos todos los días para hablar de LLMs que tienen mucho debate filosófico detrás. Cuando los aplicamos a máquinas, heredamos toda esa carga de ambigüedad y le sumamos una nueva: la de un fenómeno sin precedentes que no se parece a nada que hayamos visto antes. Este es un problema clásico de filosofía de la ciencia: pocas palabras para muchos fenómenos. Y estamos tratando de resolver preguntas fundamentales con un vocabulario que no fue diseñado para ellas.
 
 Esta es la última y más profunda capa de confusión que hoy identifico.
 
