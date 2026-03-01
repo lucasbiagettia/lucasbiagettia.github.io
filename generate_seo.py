@@ -46,22 +46,25 @@ def generate_seo_pages():
         if match:
             post_ids.add(match.group(1))
 
+    OUTPUT_DIR = 'posts_html'
+    if not os.path.exists(OUTPUT_DIR):
+        os.makedirs(OUTPUT_DIR)
+
     for post_id in post_ids:
-        # We try English first, fallback to Spanish for the SEO default
-        title, excerpt = get_post_metadata(post_id, 'en')
-        if not title:
-            title, excerpt = get_post_metadata(post_id, 'es')
-            
-        if not title:
-            continue
-            
-        # Clean up quotes for HTML injection
-        safe_title = title.replace('"', '&quot;')
-        safe_excerpt = excerpt.replace('"', '&quot;')
-        if len(safe_excerpt) > 160:
-            safe_excerpt = safe_excerpt[:157] + "..."
-            
-        seo_tags = f"""<title>{title} — Lucas Biagetti</title>
+        # Generate an SEO page for each language that exists
+        for lang in ['en', 'es']:
+            title, excerpt = get_post_metadata(post_id, lang)
+                
+            if not title:
+                continue
+                
+            # Clean up quotes for HTML injection
+            safe_title = title.replace('"', '&quot;')
+            safe_excerpt = excerpt.replace('"', '&quot;')
+            if len(safe_excerpt) > 160:
+                safe_excerpt = safe_excerpt[:157] + "..."
+                
+            seo_tags = f"""<title>{title} — Lucas Biagetti</title>
     <meta name="description" content="{safe_excerpt}">
     <meta property="og:title" content="{safe_title}">
     <meta property="og:description" content="{safe_excerpt}">
@@ -70,14 +73,14 @@ def generate_seo_pages():
     <meta name="twitter:title" content="{safe_title}">
     <meta name="twitter:description" content="{safe_excerpt}">"""
 
-        # Inject the new tags, replacing the generic title
-        escaped_template = template_html.replace('<title>Article — Lucas Biagetti</title>', seo_tags)
-        
-        output_file = f"{post_id}.html"
-        with open(output_file, 'w', encoding='utf-8') as f:
-            f.write(escaped_template)
+            # Inject the new tags, replacing the generic title
+            escaped_template = template_html.replace('<title>Article — Lucas Biagetti</title>', seo_tags)
             
-        print(f"Generated SEO page: {output_file}")
+            output_file = os.path.join(OUTPUT_DIR, f"{post_id}_{lang}.html")
+            with open(output_file, 'w', encoding='utf-8') as f:
+                f.write(escaped_template)
+                
+            print(f"Generated SEO page: {output_file}")
         
 if __name__ == "__main__":
     generate_seo_pages()

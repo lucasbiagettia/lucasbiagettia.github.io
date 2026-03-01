@@ -12,9 +12,10 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Toward a linguistic framework for thinking about language models, or: How do we build the words we're missing?">
     <meta name="twitter:description" content="Because language models express themselves, precisely, in natural language, we tend to anthropomorphize them and talk about them as if they were human. We us...">
-    <link rel="icon" href="images/favicon.ico?v=2" type="image/x-icon">
+    <!-- Assets are now one directory up since this file lives in posts_html/ -->
+    <link rel="icon" href="../images/favicon.ico?v=2" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../styles.css">
 
     <!-- Markdown parser (marked.js) -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -25,17 +26,17 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
 
     <!-- Load Posts Metadata -->
-    <script src="posts.js"></script>
+    <script src="../posts.js"></script>
 </head>
 
 <body>
     <!-- Minimal Header for internal pages -->
     <header class="site-header">
         <div class="container header-container">
-            <a href="index.html" class="site-title">Lucas Biagetti</a>
+            <a href="../index.html" class="site-title">Lucas Biagetti</a>
             <nav class="site-nav">
-                <a href="index.html#research">Research</a>
-                <a href="index.html#projects">Projects</a>
+                <a href="../index.html#research">Research</a>
+                <a href="../index.html#projects">Projects</a>
             </nav>
         </div>
     </header>
@@ -59,7 +60,7 @@
         </div>
 
         <div class="post-footer">
-            <a href="index.html" class="back-link">← Back to Home</a>
+            <a href="../index.html" class="back-link">← Back to Home</a>
         </div>
     </article>
 
@@ -87,11 +88,23 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const urlParams = new URLSearchParams(window.location.search);
-            // Read ID from filename (e.g., hacia-un-marco.html -> hacia-un-marco) or fallback to query param
-            const pathName = window.location.pathname.split('/').pop().replace('.html', '');
-            const postId = urlParams.get('id') || (pathName !== 'post' && pathName !== '' ? pathName : null);
+            // Read ID from filename (e.g., hacia-un-marco_en.html -> hacia-un-marco, en) 
+            let pathName = window.location.pathname.split('/').pop().replace('.html', '');
 
-            const lang = urlParams.get('lang') || 'en';
+            let postId = urlParams.get('id');
+            let lang = urlParams.get('lang');
+
+            // If we are on a generated SEO page (not on the post.html template)
+            if (!postId && pathName !== 'post' && pathName !== '') {
+                const match = pathName.match(/(.+)_(en|es)$/);
+                if (match) {
+                    postId = match[1];
+                    if (!lang) lang = match[2];
+                } else {
+                    postId = pathName;
+                }
+            }
+            if (!lang) lang = 'en';
             const otherLang = lang === 'en' ? 'es' : 'en';
 
             if (!postId) {
@@ -114,7 +127,12 @@
             // Setup language toggle UI
             document.documentElement.lang = lang;
             const toggleBtn = document.getElementById('lang-toggle');
-            toggleBtn.href = `${postId}.html?lang=${otherLang}`;
+            if (pathName !== 'post' && pathName !== '') {
+                // If we are on a pre-generated page, redirect to the other pre-generated page
+                toggleBtn.href = `${postId}_${otherLang}.html`;
+            } else {
+                toggleBtn.href = `post.html?id=${postId}&lang=${otherLang}`;
+            }
 
             if (lang === 'en') {
                 document.getElementById('lang-en').className = 'lang-active';
@@ -125,13 +143,13 @@
             }
 
             // Dynamic check if the alternative language translation exists
-            fetch(`posts/${postId}_${otherLang}.md`, { method: 'HEAD' })
+            fetch(`../posts/${postId}_${otherLang}.md`, { method: 'HEAD' })
                 .then(res => {
                     if (!res.ok) toggleBtn.style.display = 'none';
                 });
 
             // Fetch and Render Markdown
-            fetch(`posts/${postId}_${lang}.md`)
+            fetch(`../posts/${postId}_${lang}.md`)
                 .then(response => {
                     if (!response.ok) throw new Error(`HTTP ${response.status}: Failed to load file.`);
                     return response.text();
