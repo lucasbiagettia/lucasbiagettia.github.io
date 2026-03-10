@@ -20,7 +20,7 @@ Hay una lectura que sugiere que la inteligencia artificial no reemplaza humanos 
 
 Yo propongo una lectura distinta: lo que llamamos inteligencia artificial es un grupo de tecnologías impresionante para algunas cosas, pero no necesariamente para reemplazar la inteligencia humana.
 
-La narrativa del "humano sintético" —alimentada por las metáforas que describí en mi texto anterior: la IA "aprende", "razona", "entiende"— nos llevó a evaluar esta tecnología con una vara equivocada. La métrica de éxito es cuántos humanos son reemplazados.
+La narrativa del "humano sintético" (alimentada por las metáforas que describí en mi texto anterior: la IA "aprende", "razona", "entiende") nos llevó a evaluar esta tecnología con una vara equivocada. La métrica de éxito es cuántos humanos son reemplazados.
 
 En un proyecto, un cliente nos pidió que usáramos IA para reemplazar el 70% de su call center. Su idea de éxito era menos personas, menos costos. En aquel momento yo no tenía claro todo esto que digo aquí, pero más que nada por miedo al fracaso, propuse otra métrica, la satisafacción de los clientes. Cambiar la dirección de la idea de éxito se parece a lo que propongo acá.
 

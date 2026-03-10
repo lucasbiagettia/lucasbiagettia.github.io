@@ -20,7 +20,7 @@ There is an interpretation suggesting that artificial intelligence does not repl
 
 I propose a different view: what we call artificial intelligence is a group of technologies that are impressive for certain things, but not necessarily for replacing human intelligence.
 
-The “synthetic human” narrative—fueled by the metaphors I described in my [previous text](https://lucasbiagetti.com.ar/posts_html/hacia-un-marco-linguistico_en.html): AI "learns", "reasons", "understands”—has led us to evaluate this technology with the wrong yardstick. The success metric is how many humans are replaced.
+The “synthetic human” narrative,fueled by the metaphors I described in my [previous text](https://lucasbiagetti.com.ar/posts_html/hacia-un-marco-linguistico_en.html): AI "learns", "reasons", "understands”,has led us to evaluate this technology with the wrong yardstick. The success metric is how many humans are replaced.
 
 On one project, a client asked us to use AI to replace 70% of his call center. His idea of success was fewer people, lower costs. At the time I wasn't as clear on all this as I am here, but mostly out of fear of failure, I proposed a different metric: customer satisfaction. Changing the direction of the definition of success looks like what I'm proposing here.
 
