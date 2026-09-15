@@ -7,6 +7,7 @@
 */
 
 const BLOG_POSTS = [
+  { id: "senales-de-un-cambio-acelerado", date: "2026-09-14" },
   { id: "es_posible_evitar_que_explote", date: "2026-03-09" },
   { id: "hacia-un-marco-linguistico", date: "2026-02-28" },
 ];
